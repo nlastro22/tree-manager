@@ -1,0 +1,11 @@
+.parent-container {
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0;
+  }
+}
+
+.children-container {
+  margin-left: 1rem;
+}

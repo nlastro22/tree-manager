@@ -1,5 +1,11 @@
-<mat-icon>{{ node().opened ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
-<p>{{ node().label }}</p>
-@for (node of node().items; track node) {
-  <app-tree-node [node]="node"></app-tree-node>
-}
+<div class="node-container">
+  <div class="parent-container">
+    <mat-icon>{{ node().opened ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
+    <p>{{ node().label }}</p>
+  </div>
+  <div class="children-container">
+    @for (node of node().items; track node) {
+      <app-tree-node [node]="node"></app-tree-node>
+    }
+  </div>
+</div>
