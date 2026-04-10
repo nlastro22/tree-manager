@@ -10,4 +10,7 @@ import { TreeNodeModel } from './tree-node.model';
 })
 export class TreeNode {
   node = input.required<TreeNodeModel>();
+  ngOnInit() {
+    console.log(this.node());
+  }
 }

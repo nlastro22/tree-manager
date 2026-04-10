@@ -1,6 +1,6 @@
 import { effect, Injectable, signal } from '@angular/core';
 import { TreeNodeModel } from './tree-node.model';
-import * as treeData from '../../../public/data.json';
+import treeData from '../../../public/data.json';
 
 @Injectable({
   providedIn: 'root',
@@ -8,11 +8,12 @@ import * as treeData from '../../../public/data.json';
 export class TreeNodeService {
   private readonly TREE_DATA_KEY = 'tree-data';
 
-  treeData = signal<TreeNodeModel[]>(this.getTreeData());
+  private _treeData = signal<TreeNodeModel[]>(this.getTreeData());
+  readonly data = this._treeData.asReadonly();
 
   constructor() {
     effect(() => {
-      localStorage.setItem(this.TREE_DATA_KEY, JSON.stringify(this.treeData()));
+      localStorage.setItem(this.TREE_DATA_KEY, JSON.stringify(this._treeData()));
     });
   }
 
