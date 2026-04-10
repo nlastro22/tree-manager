@@ -1,6 +1,7 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { TreeNodeModel } from './tree-node.model';
+import { TreeNodeService } from './tree-node-service';
 
 @Component({
   selector: 'app-tree-node',
@@ -9,8 +10,11 @@ import { TreeNodeModel } from './tree-node.model';
   styleUrl: './tree-node.scss',
 })
 export class TreeNode {
+  private readonly treeService = inject(TreeNodeService);
+
   node = input.required<TreeNodeModel>();
-  ngOnInit() {
-    console.log(this.node());
+
+  onNodeClick(event: MouseEvent) {
+    this.treeService.toggleNode(this.node().id);
   }
 }

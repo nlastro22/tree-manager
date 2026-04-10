@@ -1,6 +1,7 @@
 import { effect, Injectable, signal } from '@angular/core';
 import { TreeNodeModel } from './tree-node.model';
 import treeData from '../../../public/data.json';
+import { TreeNode } from './tree-node';
 
 @Injectable({
   providedIn: 'root',
@@ -49,6 +50,23 @@ export class TreeNodeService {
 
     this._treeData.update((oldArray) => {
       return oldArray.map((node) => (node.id === parent.id ? parent : node));
+    });
+  }
+
+  toggleNode(id: string): void {
+    this._treeData.update((oldArray) => {
+      return this.updateRecursive(id, oldArray);
+    });
+  }
+
+  updateRecursive(id: string, array: TreeNodeModel[]): TreeNodeModel[] {
+    return array.map((node) => {
+      if (node.id === id) {
+        return { ...node, opened: !node.opened };
+      } else if (node.items && node.items.length > 0) {
+        return { ...node, items: this.updateRecursive(id, node.items) };
+      }
+      return node;
     });
   }
 }
