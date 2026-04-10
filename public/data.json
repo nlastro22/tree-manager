@@ -5,6 +5,20 @@
     "opened": false,
     "items": [
       { "id": "1.1", "label": "Identify gumb", "items": [], "opened": false },
+      {
+        "id": "1.2",
+        "label": "Info lokacija gumb",
+        "items": [{ "id": "1.21", "label": "Desni panel", "items": [], "opened": false }],
+        "opened": false
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "label": "Katalog slojeva",
+    "opened": false,
+    "items": [
+      { "id": "1.1", "label": "Identify gumb", "items": [], "opened": false },
       { "id": "1.2", "label": "Info lokacija gumb", "items": [], "opened": false }
     ]
   }

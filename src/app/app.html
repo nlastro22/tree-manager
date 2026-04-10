@@ -1,1 +1,3 @@
-<app-tree-node [node]="nodes()[0]"></app-tree-node>
+@for (node of nodes(); track node.id) {
+  <app-tree-node [node]="node"></app-tree-node>
+}

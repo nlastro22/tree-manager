@@ -24,4 +24,31 @@ export class TreeNodeService {
     }
     return treeData as TreeNodeModel[];
   }
+
+  private getTreeNode(id: string): TreeNodeModel | null {
+    const foundNode = this._treeData().find((node) => node.id === id);
+
+    if (foundNode) {
+      return foundNode;
+    }
+    return null;
+  }
+
+  addTreeNode(label: string, parentId: string): void | null {
+    const newNode: TreeNodeModel = {
+      id: Math.random().toString(),
+      label: label,
+      opened: false,
+    };
+
+    const parent = this.getTreeNode(parentId);
+    if (!parent) {
+      return null;
+    }
+    parent?.items?.push(newNode);
+
+    this._treeData.update((oldArray) => {
+      return oldArray.map((node) => (node.id === parent.id ? parent : node));
+    });
+  }
 }
