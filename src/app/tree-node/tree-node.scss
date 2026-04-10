@@ -1,8 +1,16 @@
 .parent-container {
   display: flex;
   align-items: center;
+  width: fit-content;
+  cursor: pointer;
+  padding: 0.1rem 01rem 0 0.5rem;
+  border-radius: var(--mat-sys-corner-extra-small);
   p {
     margin: 0;
+  }
+
+  &:hover {
+    background-color: var(--mat-sys-primary-container);
   }
 }
 

@@ -4,20 +4,21 @@
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
+@import '../theme.css';
 
-html {
-  height: 100%;
-  @include mat.theme(
-    (
-      color: (
-        primary: mat.$magenta-palette,
-        tertiary: mat.$violet-palette,
-      ),
-      typography: Roboto,
-      density: 0,
-    )
-  );
-}
+// html {
+//   height: 100%;
+//   @include mat.theme(
+//     (
+//       color: (
+//         primary: mat.$magenta-palette,
+//         tertiary: mat.$violet-palette,
+//       ),
+//       typography: Roboto,
+//       density: 0,
+//     )
+//   );
+// }
 
 body {
   // Default the application to a light color theme. This can be changed to
