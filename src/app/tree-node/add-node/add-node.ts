@@ -1,4 +1,4 @@
-import { Component, inject, model, output } from '@angular/core';
+import { Component, inject, model, output, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -11,13 +11,17 @@ import { MatInputModule } from '@angular/material/input';
   templateUrl: './add-node.html',
   styleUrl: './add-node.scss',
 })
-export class AddNode {
+export class AddNode implements OnInit {
   private readonly dialogRef = inject(MatDialogRef);
   readonly add = output();
   readonly data = inject(MAT_DIALOG_DATA);
 
-  addType = model(this.data.addType);
+  addType = model<'child' | 'parent'>(this.data.addType);
   node = model(this.data.node);
+
+  ngOnInit(): void {
+    console.log(this.addType());
+  }
 
   onCancelClick(): void {
     this.dialogRef.close();

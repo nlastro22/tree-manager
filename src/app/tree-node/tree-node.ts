@@ -24,6 +24,7 @@ export class TreeNode {
   }
 
   onAddNodeClick(type: 'child' | 'parent'): void {
+    console.log(type);
     const dialogRef = this.dialog.open(AddNode, {
       data: { addType: type, node: this.node() },
     });
