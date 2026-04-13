@@ -1,10 +1,16 @@
 <div class="node-container">
-  <div class="parent-container">
+  <div
+    class="parent-container"
+    (mouseenter)="isHovering.set(true)"
+    (mouseleave)="isHovering.set(false)"
+  >
     <button class="parent-btn" (click)="onNodeClick()">
       <mat-icon>{{ node().opened ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
       <p>{{ node().label }}</p>
     </button>
-    <app-actions></app-actions>
+    @if (isHovering()) {
+      <app-actions></app-actions>
+    }
   </div>
   <div class="children-container">
     @for (item of node().items; track item.id) {

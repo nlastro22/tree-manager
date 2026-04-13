@@ -19,8 +19,8 @@ html {
   --mat-sys-on-secondary: light-dark(#ffffff, #293045);
   --mat-sys-secondary-container: light-dark(#dbe1fe, #3f465d);
   --mat-sys-on-secondary-container: light-dark(#141b2f, #dbe1fe);
-  --mat-sys-secondary-fixed: light-dark(#dbe1fe80, #dbe1fe);
-  --mat-sys-secondary-fixed-dim: light-dark(#bfc5e1, #bfc5e1);
+  --mat-sys-secondary-fixed: light-dark(#dbe1feb0, #dbe1fe);
+  --mat-sys-secondary-fixed-dim: light-dark(#bfc5e196, #bfc5e1);
   --mat-sys-on-secondary-fixed: light-dark(#141b2f, #141b2f);
   --mat-sys-on-secondary-fixed-variant: light-dark(#3f465d, #3f465d);
 
