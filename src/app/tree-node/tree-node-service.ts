@@ -1,7 +1,6 @@
 import { effect, Injectable, signal } from '@angular/core';
 import { TreeNodeModel } from './tree-node.model';
 import treeData from '../../../public/data.json';
-import { TreeNode } from './tree-node';
 
 @Injectable({
   providedIn: 'root',

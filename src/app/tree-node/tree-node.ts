@@ -14,7 +14,7 @@ export class TreeNode {
 
   node = input.required<TreeNodeModel>();
 
-  onNodeClick(event: MouseEvent) {
+  onNodeClick(): void {
     this.treeService.toggleNode(this.node().id);
   }
 }

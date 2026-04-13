@@ -1,8 +1,8 @@
 <div class="node-container">
-  <div class="parent-container" (click)="onNodeClick($event)">
+  <button class="parent-container" (click)="onNodeClick()">
     <mat-icon>{{ node().opened ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
     <p>{{ node().label }}</p>
-  </div>
+  </button>
   <div class="children-container">
     @for (item of node().items; track item.id) {
       <app-tree-node [node]="item"></app-tree-node>
