@@ -1,8 +1,11 @@
 <div class="node-container">
-  <button class="parent-container" (click)="onNodeClick()">
-    <mat-icon>{{ node().opened ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
-    <p>{{ node().label }}</p>
-  </button>
+  <div class="parent-container">
+    <button class="parent-btn" (click)="onNodeClick()">
+      <mat-icon>{{ node().opened ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
+      <p>{{ node().label }}</p>
+    </button>
+    <app-actions></app-actions>
+  </div>
   <div class="children-container">
     @for (item of node().items; track item.id) {
       <app-tree-node [node]="item"></app-tree-node>

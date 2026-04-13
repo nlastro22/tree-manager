@@ -1,6 +1,13 @@
 .parent-container {
   display: flex;
+  gap: 2rem;
+  margin-left: 0.5rem;
+}
+
+.parent-btn {
+  display: flex;
   align-items: center;
+  border: none;
   width: fit-content;
   cursor: pointer;
   padding: 0.1rem 01rem 0 0.5rem;
