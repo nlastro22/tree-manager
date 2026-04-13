@@ -17,6 +17,7 @@ export class AddNode implements OnInit {
   readonly data = inject(MAT_DIALOG_DATA);
 
   addType = model<'child' | 'parent'>(this.data.addType);
+  label = model<string>(this.data.label);
   node = model(this.data.node);
 
   ngOnInit(): void {

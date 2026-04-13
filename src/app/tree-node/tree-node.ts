@@ -23,13 +23,15 @@ export class TreeNode {
     this.treeService.toggleNode(this.node().id);
   }
 
-  onAddNodeClick(type: 'child' | 'parent'): void {
+  onAddBtnClick(type: 'child' | 'parent'): void {
     console.log(type);
     const dialogRef = this.dialog.open(AddNode, {
       data: { addType: type, node: this.node() },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
+      if (result !== undefined) {
+        this.treeService.addTreeNode(result, this.node().id);
+      }
     });
   }
 }

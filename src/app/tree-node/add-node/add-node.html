@@ -9,10 +9,12 @@
 <mat-dialog-content>
   <mat-form-field>
     <mat-label>Naziv</mat-label>
-    <input matInput />
+    <input [(ngModel)]="label" matInput />
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button matButton (click)="onCancelClick()">Odustani</button>
-  <button matButton (click)="onAddClick()" [mat-dialog-close]="true" cdkFocusInitial>Dodaj</button>
+  <button matButton (click)="onAddClick()" [mat-dialog-close]="label()" cdkFocusInitial>
+    Dodaj
+  </button>
 </mat-dialog-actions>

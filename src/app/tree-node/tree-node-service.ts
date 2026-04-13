@@ -37,7 +37,7 @@ export class TreeNodeService {
     });
   }
 
-  addRecursiveNode(
+  private addRecursiveNode(
     nodeArray: TreeNodeModel[],
     id: string,
     newNode: TreeNodeModel,
@@ -58,7 +58,7 @@ export class TreeNodeService {
     });
   }
 
-  updateRecursive(id: string, oldArray: TreeNodeModel[]): TreeNodeModel[] {
+  private updateRecursive(id: string, oldArray: TreeNodeModel[]): TreeNodeModel[] {
     return oldArray.map((node) => {
       if (id === node.id) {
         return { ...node, opened: !node.opened };
