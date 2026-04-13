@@ -2,9 +2,11 @@
   display: flex;
   gap: 1rem;
 
-  .actions-btn {
-    display: flex;
-    align-items: center;
-    border: none;
+  .actions-btn:hover {
+    background-color: var(--mat-sys-secondary-fixed);
+  }
+
+  .delete-btn {
+    color: var(--mat-sys-tertiary);
   }
 }
