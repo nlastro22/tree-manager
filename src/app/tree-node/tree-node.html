@@ -12,9 +12,11 @@
       <app-actions (add)="onAddNodeClick($event)"></app-actions>
     }
   </div>
-  <div class="children-container">
-    @for (item of node().items; track item.id) {
-      <app-tree-node [node]="item"></app-tree-node>
-    }
-  </div>
+  @if (node().opened) {
+    <div class="children-container">
+      @for (item of node().items; track item.id) {
+        <app-tree-node [node]="item"></app-tree-node>
+      }
+    </div>
+  }
 </div>
