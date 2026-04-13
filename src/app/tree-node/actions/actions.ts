@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -8,4 +8,10 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './actions.html',
   styleUrl: './actions.scss',
 })
-export class Actions {}
+export class Actions {
+  readonly add = output<'child' | 'parent'>();
+
+  onAddChildClick(): void {
+    this.add.emit('child');
+  }
+}
