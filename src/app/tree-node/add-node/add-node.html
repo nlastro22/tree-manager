@@ -1,4 +1,10 @@
-<h2 mat-dialog-title>Dodaj novi</h2>
+<h2 mat-dialog-title>
+  {{
+    'Dodaj ' + addType === 'child'
+      ? 'dijete na '
+      : 'roditelja ' + 'elementu: "' + node().label + '"'
+  }}
+</h2>
 <mat-dialog-content>
   <mat-form-field>
     <mat-label>Naziv</mat-label>

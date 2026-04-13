@@ -3,6 +3,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { TreeNodeModel } from './tree-node.model';
 import { TreeNodeService } from './tree-node-service';
 import { Actions } from './actions/actions';
+import { MatDialog } from '@angular/material/dialog';
+import { AddNode } from './add-node/add-node';
 
 @Component({
   selector: 'app-tree-node',
@@ -12,11 +14,21 @@ import { Actions } from './actions/actions';
 })
 export class TreeNode {
   private readonly treeService = inject(TreeNodeService);
+  private readonly dialog = inject(MatDialog);
 
   node = input.required<TreeNodeModel>();
   isHovering = signal(false);
 
   onNodeClick(): void {
     this.treeService.toggleNode(this.node().id);
+  }
+
+  onAddNodeClick(type: 'child' | 'parent'): void {
+    const dialogRef = this.dialog.open(AddNode, {
+      data: { addType: type, node: this.node() },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    });
   }
 }

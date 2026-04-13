@@ -14,4 +14,8 @@ export class Actions {
   onAddChildClick(): void {
     this.add.emit('child');
   }
+
+  onAddParentClick(): void {
+    this.add.emit('parent');
+  }
 }
