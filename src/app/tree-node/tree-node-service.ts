@@ -25,7 +25,7 @@ export class TreeNodeService {
     return treeData as TreeNodeModel[];
   }
 
-  addTreeNode(label: string, parentId: string): void | null {
+  addTreeNode(label: string, id: string, isChild: boolean): void | null {
     const newNode: TreeNodeModel = {
       id: Math.random().toString(),
       label: label,
@@ -33,11 +33,15 @@ export class TreeNodeService {
     };
 
     this._treeData.update((oldArray) => {
-      return this.addRecursiveNode(oldArray, parentId, newNode);
+      if (isChild) {
+        return this.addRecursiveChildNode(oldArray, id, newNode);
+      } else {
+        return this.addRecursiveParentNode(oldArray, id, newNode);
+      }
     });
   }
 
-  private addRecursiveNode(
+  private addRecursiveChildNode(
     nodeArray: TreeNodeModel[],
     id: string,
     newNode: TreeNodeModel,
@@ -46,7 +50,22 @@ export class TreeNodeService {
       if (node.id === id) {
         return { ...node, items: [...(node.items || []), newNode] };
       } else if (node.items && node.items.length > 0) {
-        return { ...node, items: this.addRecursiveNode(node.items, id, newNode) };
+        return { ...node, items: this.addRecursiveChildNode(node.items, id, newNode) };
+      }
+      return node;
+    });
+  }
+
+  private addRecursiveParentNode(
+    nodeArray: TreeNodeModel[],
+    id: string,
+    newNode: TreeNodeModel,
+  ): TreeNodeModel[] {
+    return nodeArray.map((node) => {
+      if (node.id === id) {
+        return { ...newNode, items: [node] };
+      } else if (node.items && node.items.length > 0) {
+        return { ...node, items: this.addRecursiveParentNode(node.items, id, newNode) };
       }
       return node;
     });
