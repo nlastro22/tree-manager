@@ -68,4 +68,25 @@ export class TreeNodeService {
       return node;
     });
   }
+
+  expandAll(): void {
+    this._treeData.update((oldArray) => {
+      return this.toggleNodesRecursive(oldArray, true);
+    });
+  }
+
+  collapseAll(): void {
+    this._treeData.update((oldArray) => {
+      return this.toggleNodesRecursive(oldArray, false);
+    });
+  }
+
+  private toggleNodesRecursive(array: TreeNodeModel[], opened: boolean): TreeNodeModel[] {
+    return array.map((node) => {
+      if (node.items && node.items.length > 0) {
+        this.toggleNodesRecursive(node.items, opened);
+      }
+      return { ...node, opened: opened };
+    });
+  }
 }

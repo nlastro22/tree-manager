@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { TreeNodeService } from '../tree-node/tree-node-service';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +9,14 @@ import { MatIcon } from '@angular/material/icon';
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
-export class Header {}
+export class Header {
+  private treeService = inject(TreeNodeService);
+
+  onExpandBtnClick(): void {
+    this.treeService.expandAll();
+  }
+
+  onCollapseBtnClick(): void {
+    this.treeService.collapseAll();
+  }
+}
