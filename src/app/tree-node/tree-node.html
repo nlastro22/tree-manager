@@ -9,7 +9,7 @@
       <p>{{ node().label }}</p>
     </button>
     @if (isHovering()) {
-      <app-actions (add)="onAddBtnClick($event)"></app-actions>
+      <app-actions (add)="onAddEvent($event)" (delete)="onDeleteEvent()"></app-actions>
     }
   </div>
   @if (node().opened) {

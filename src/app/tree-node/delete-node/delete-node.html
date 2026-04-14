@@ -1,4 +1,6 @@
-<h2 mat-dialog-title>{{ 'Jeste li sigurni da želite obrisati "' + node().label }}</h2>
-<button matButton>Odustani</button>
-<button matButton>Obrišite element</button>
-<button matButton cdkFocusInitial>Obrišite element i svu njegovu djecu</button>
+<h2 mat-dialog-title>{{ 'Jeste li sigurni da želite obrisati "' + label() + '"' }}</h2>
+<mat-dialog-actions>
+  <button matButton (click)="onCancelClick()">Odustani</button>
+  <button matButton>Obrišite element</button>
+  <button matButton cdkFocusInitial>Obrišite element i svu njegovu djecu</button>
+</mat-dialog-actions>

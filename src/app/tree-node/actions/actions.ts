@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class Actions {
   readonly add = output<'child' | 'parent'>();
+  readonly delete = output();
 
   onAddChildClick(): void {
     this.add.emit('child');
@@ -17,5 +18,9 @@ export class Actions {
 
   onAddParentClick(): void {
     this.add.emit('parent');
+  }
+
+  onDeleteBtnClick(): void {
+    this.delete.emit();
   }
 }

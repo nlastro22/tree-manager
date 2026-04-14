@@ -5,6 +5,7 @@ import { TreeNodeService } from './tree-node-service';
 import { Actions } from './actions/actions';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNode } from './add-node/add-node';
+import { DeleteNode } from './delete-node/delete-node';
 
 @Component({
   selector: 'app-tree-node',
@@ -23,8 +24,7 @@ export class TreeNode {
     this.treeService.toggleNode(this.node().id);
   }
 
-  onAddBtnClick(type: 'child' | 'parent'): void {
-    console.log(type);
+  onAddEvent(type: 'child' | 'parent'): void {
     const dialogRef = this.dialog.open(AddNode, {
       data: { addType: type, node: this.node() },
     });
@@ -33,6 +33,16 @@ export class TreeNode {
         const isChild = type === 'child' ? true : false;
         this.treeService.addTreeNode(result, this.node().id, isChild);
       }
+    });
+  }
+
+  onDeleteEvent(): void {
+    const dialogRef = this.dialog.open(DeleteNode, {
+      data: { label: this.node().label },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
     });
   }
 }
