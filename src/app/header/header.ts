@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { TreeNodeService } from '../tree-node/tree-node-service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddNode } from '../tree-node/add-node/add-node';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +13,7 @@ import { TreeNodeService } from '../tree-node/tree-node-service';
 })
 export class Header {
   private treeService = inject(TreeNodeService);
+  readonly dialog = inject(MatDialog);
 
   onExpandBtnClick(): void {
     this.treeService.expandAll();
@@ -21,6 +24,11 @@ export class Header {
   }
 
   onAddRootBtnClick(): void {
-    console.log();
+    const dialogRef = this.dialog.open(AddNode, {
+      data: { addType: 'root' },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    });
   }
 }

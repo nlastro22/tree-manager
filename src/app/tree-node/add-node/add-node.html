@@ -1,9 +1,11 @@
 <h2 mat-dialog-title>
   {{
     'Dodaj ' +
-      (addType() === 'child' ? 'dijete na element "' : 'roditelja elementu "') +
-      node().label +
-      '"'
+      (addType() === 'child'
+        ? 'dijete na element "' + node().label + '"'
+        : addType() === 'parent'
+          ? 'roditelja elementu "' + node().label + '"'
+          : ' korijenski element')
   }}
 </h2>
 <mat-dialog-content>
