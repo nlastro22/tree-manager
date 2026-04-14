@@ -109,4 +109,18 @@ export class TreeNodeService {
       return updatedNode;
     });
   }
+
+  deleteNodeWithChildren(id: string): void {
+    this._treeData.update((oldArray) => {
+      return this.deleteNodeWithChildrenRecursive(id, oldArray);
+    });
+  }
+
+  private deleteNodeWithChildrenRecursive(id: string, array: TreeNodeModel[]): TreeNodeModel[] {
+    const newArr = array.filter((node) => node.id !== id);
+    return newArr.map((node) => ({
+      ...node,
+      items: node.items ? this.deleteNodeWithChildrenRecursive(id, node.items) : [],
+    }));
+  }
 }
