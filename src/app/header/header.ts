@@ -19,4 +19,8 @@ export class Header {
   onCollapseBtnClick(): void {
     this.treeService.collapseAll();
   }
+
+  onAddRootBtnClick(): void {
+    console.log();
+  }
 }
