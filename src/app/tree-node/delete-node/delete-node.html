@@ -4,6 +4,6 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button matButton="tonal" (click)="onCancelClick()">Odustani</button>
-  <button matButton="tonal">Obriši element</button>
-  <button matButton="filled">Obriši element i djecu</button>
+  <button matButton="tonal" [mat-dialog-close]="'delete'">Obriši element</button>
+  <button matButton="filled" [mat-dialog-close]="'delete-all'">Obriši element i djecu</button>
 </mat-dialog-actions>

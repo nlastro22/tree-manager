@@ -110,7 +110,7 @@ export class TreeNodeService {
     });
   }
 
-  deleteNodeWithChildren(id: string): void {
+  deleteNode(id: string): void {
     this._treeData.update((oldArray) => {
       return this.deleteNodeWithChildrenRecursive(id, oldArray);
     });

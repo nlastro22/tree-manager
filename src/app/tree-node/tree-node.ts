@@ -43,7 +43,11 @@ export class TreeNode {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
+      if (result === 'delete') {
+        console.log(result);
+      } else if (result === 'delete-all') {
+        this.treeService.deleteNode(this.node().id);
+      }
     });
   }
 }
