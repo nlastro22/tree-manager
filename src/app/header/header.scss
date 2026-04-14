@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 0.5rem;
+  background-color: var(--mat-sys-primary-fixed-dim);
+}
+
+button:first-child {
+  margin-left: 2rem;
+}

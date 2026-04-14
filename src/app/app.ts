@@ -1,10 +1,11 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { TreeNode } from './tree-node/tree-node';
 import { TreeNodeService } from './tree-node/tree-node-service';
+import { Header } from './header/header';
 
 @Component({
   selector: 'app-root',
-  imports: [TreeNode],
+  imports: [TreeNode, Header],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
