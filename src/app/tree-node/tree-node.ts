@@ -39,6 +39,7 @@ export class TreeNode {
   onDeleteEvent(): void {
     const dialogRef = this.dialog.open(DeleteNode, {
       data: { label: this.node().label },
+      width: '35rem',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

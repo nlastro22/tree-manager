@@ -1,6 +1,9 @@
 <h2 mat-dialog-title>{{ 'Jeste li sigurni da želite obrisati "' + label() + '"' }}</h2>
+<mat-dialog-content>
+  <p>Odaberi način brisanja:</p>
+</mat-dialog-content>
 <mat-dialog-actions>
-  <button matButton (click)="onCancelClick()">Odustani</button>
-  <button matButton>Obrišite element</button>
-  <button matButton cdkFocusInitial>Obrišite element i svu njegovu djecu</button>
+  <button matButton="tonal" (click)="onCancelClick()">Odustani</button>
+  <button matButton="tonal">Obriši element</button>
+  <button matButton="filled">Obriši element i djecu</button>
 </mat-dialog-actions>
