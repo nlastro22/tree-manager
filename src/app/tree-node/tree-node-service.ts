@@ -102,10 +102,11 @@ export class TreeNodeService {
 
   private toggleNodesRecursive(array: TreeNodeModel[], opened: boolean): TreeNodeModel[] {
     return array.map((node) => {
+      const updatedNode = { ...node, opened: opened };
       if (node.items && node.items.length > 0) {
-        this.toggleNodesRecursive(node.items, opened);
+        updatedNode.items = this.toggleNodesRecursive(node.items, opened);
       }
-      return { ...node, opened: opened };
+      return updatedNode;
     });
   }
 }
