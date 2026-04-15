@@ -120,9 +120,13 @@ export class TreeNodeService {
     });
   }
 
-  deleteNode(id: string): void {
+  deleteNode(id: string, withChildren: boolean): void {
     this._treeData.update((oldArray) => {
-      return this.deleteNodeWithChildrenRecursive(id, oldArray);
+      if (withChildren) {
+        return this.deleteNodeWithChildrenRecursive(id, oldArray);
+      } else {
+        return this.deleteNodeRecursive(id, oldArray);
+      }
     });
   }
 
@@ -132,5 +136,18 @@ export class TreeNodeService {
       ...node,
       items: node.items ? this.deleteNodeWithChildrenRecursive(id, node.items) : [],
     }));
+  }
+
+  private deleteNodeRecursive(id: string, array: TreeNodeModel[]): TreeNodeModel[] {
+    return array.map((node) => {
+      if (node.id === id) {
+        node.items?.map((item) => {
+          return item;
+        });
+      } else if (node.items && node.items.length > 0) {
+        return { ...node, items: this.deleteNodeRecursive(id, node.items) };
+      }
+      return node;
+    });
   }
 }

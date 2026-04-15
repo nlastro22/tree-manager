@@ -44,9 +44,9 @@ export class TreeNode {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'delete') {
-        console.log(result);
+        this.treeService.deleteNode(this.node().id, false);
       } else if (result === 'delete-all') {
-        this.treeService.deleteNode(this.node().id);
+        this.treeService.deleteNode(this.node().id, true);
       }
     });
   }
