@@ -1,8 +1,8 @@
-<h2 mat-dialog-title>Uredite element</h2>
+<h2 mat-dialog-title>Promijeni naziv</h2>
 <mat-dialog-content>
   <mat-form-field>
     <mat-label>Naziv</mat-label>
-    <input #newLabel matInput />
+    <input #newLabel matInput [value]="label()" />
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>

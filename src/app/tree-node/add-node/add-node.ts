@@ -23,8 +23,4 @@ export class AddNode {
   onCancelClick(): void {
     this.dialogRef.close();
   }
-
-  onAddClick(): void {
-    this.add.emit();
-  }
 }

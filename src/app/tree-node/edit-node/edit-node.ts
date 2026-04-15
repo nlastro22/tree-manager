@@ -1,7 +1,7 @@
-import { Component, inject, output, signal } from '@angular/core';
+import { Component, inject, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -12,15 +12,11 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './edit-node.scss',
 })
 export class EditNode {
-  label = signal<string>('');
-  save = output<string>();
+  readonly data = inject(MAT_DIALOG_DATA);
   readonly dialogRef = inject(MatDialogRef);
+  label = model(this.data.label);
 
   onCancelClick(): void {
     this.dialogRef.close();
-  }
-
-  onSaveClick(): void {
-    this.save.emit(this.label());
   }
 }
