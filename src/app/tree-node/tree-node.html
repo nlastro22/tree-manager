@@ -7,6 +7,7 @@
     <button class="parent-btn" (click)="onNodeClick()">
       <mat-icon>{{ node().opened ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
       <p>{{ node().label }}</p>
+      <p>{{ node().items && node().items?.length ? '(' + node().items?.length + ')' : '' }}</p>
     </button>
     @if (isHovering()) {
       <app-actions
