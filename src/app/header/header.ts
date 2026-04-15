@@ -28,7 +28,9 @@ export class Header {
       data: { addType: 'root' },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
+      if (result !== undefined) {
+        this.treeService.addRootNode(result);
+      }
     });
   }
 }
