@@ -87,10 +87,16 @@ export class TreeNodeService {
     });
   }
 
-  private updateRecursive(id: string, oldArray: TreeNodeModel[]): TreeNodeModel[] {
+  changeLabel(id: string, label: string): void {
+    this._treeData.update((oldArray) => {
+      return this.updateRecursive(id, oldArray, label);
+    });
+  }
+
+  private updateRecursive(id: string, oldArray: TreeNodeModel[], label?: string): TreeNodeModel[] {
     return oldArray.map((node) => {
       if (id === node.id) {
-        return { ...node, opened: !node.opened };
+        return label ? { ...node, label: label } : { ...node, opened: !node.opened };
       } else if (node.items && node.items.length > 0) {
         return { ...node, items: this.updateRecursive(id, node.items) };
       }
