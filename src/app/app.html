@@ -1,4 +1,6 @@
 <app-header></app-header>
 @for (node of nodes(); track node.id) {
   <app-tree-node [node]="node"></app-tree-node>
+} @empty {
+  <p class="no-nodes-message">Nema dodanih elemenata!</p>
 }
