@@ -139,15 +139,13 @@ export class TreeNodeService {
   }
 
   private deleteNodeRecursive(id: string, array: TreeNodeModel[]): TreeNodeModel[] {
-    return array.map((node) => {
-      if (node.id === id) {
-        node.items?.map((item) => {
-          return item;
-        });
+    return array.flatMap((node) => {
+      if (node.id === id && node.items) {
+        return node.items;
       } else if (node.items && node.items.length > 0) {
-        return { ...node, items: this.deleteNodeRecursive(id, node.items) };
+        return [{ ...node, items: this.deleteNodeRecursive(id, node.items) }];
       }
-      return node;
+      return [node];
     });
   }
 }
