@@ -6,6 +6,7 @@ import { Actions } from './actions/actions';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNode } from './add-node/add-node';
 import { DeleteNode } from './delete-node/delete-node';
+import { EditNode } from './edit-node/edit-node';
 
 @Component({
   selector: 'app-tree-node',
@@ -47,6 +48,16 @@ export class TreeNode {
         this.treeService.deleteNode(this.node().id, false);
       } else if (result === 'delete-all') {
         this.treeService.deleteNode(this.node().id, true);
+      }
+    });
+  }
+
+  onEditEvent(): void {
+    const dialogRef = this.dialog.open(EditNode);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== undefined) {
+        console.log(result);
       }
     });
   }
