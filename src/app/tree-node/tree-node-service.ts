@@ -25,6 +25,16 @@ export class TreeNodeService {
     return treeData as TreeNodeModel[];
   }
 
+  addRootNode(label: string): void {
+    const newNode: TreeNodeModel = {
+      id: Math.random().toString(),
+      label: label,
+      opened: false,
+    };
+
+    this._treeData.update((oldArray) => [...oldArray, newNode]);
+  }
+
   addTreeNode(label: string, id: string, isChild: boolean): void | null {
     const newNode: TreeNodeModel = {
       id: Math.random().toString(),
