@@ -53,7 +53,7 @@ export class TreeNode {
   }
 
   onEditEvent(): void {
-    const dialogRef = this.dialog.open(EditNode);
+    const dialogRef = this.dialog.open(EditNode, { data: { label: this.node().label } });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== undefined) {

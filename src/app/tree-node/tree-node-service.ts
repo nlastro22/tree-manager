@@ -140,8 +140,8 @@ export class TreeNodeService {
 
   private deleteNodeRecursive(id: string, array: TreeNodeModel[]): TreeNodeModel[] {
     return array.flatMap((node) => {
-      if (node.id === id && node.items) {
-        return node.items;
+      if (node.id === id) {
+        return node.items || [];
       } else if (node.items && node.items.length > 0) {
         return [{ ...node, items: this.deleteNodeRecursive(id, node.items) }];
       }

@@ -2,12 +2,10 @@
 <mat-dialog-content>
   <mat-form-field>
     <mat-label>Naziv</mat-label>
-    <input [(ngModel)]="label" matInput />
+    <input #newLabel matInput />
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button matButton (click)="onCancelClick()">Odustani</button>
-  <button matButton (click)="onSaveClick()" [mat-dialog-close]="label()" cdkFocusInitial>
-    Spremi
-  </button>
+  <button matButton [mat-dialog-close]="newLabel" cdkFocusInitial>Spremi</button>
 </mat-dialog-actions>
