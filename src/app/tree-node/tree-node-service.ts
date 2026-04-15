@@ -98,7 +98,7 @@ export class TreeNodeService {
       if (id === node.id) {
         return label ? { ...node, label: label } : { ...node, opened: !node.opened };
       } else if (node.items && node.items.length > 0) {
-        return { ...node, items: this.updateRecursive(id, node.items) };
+        return { ...node, items: this.updateRecursive(id, node.items, label) };
       }
       return node;
     });

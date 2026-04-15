@@ -7,5 +7,5 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button matButton (click)="onCancelClick()">Odustani</button>
-  <button matButton [mat-dialog-close]="newLabel" cdkFocusInitial>Spremi</button>
+  <button matButton [mat-dialog-close]="newLabel.value" cdkFocusInitial>Spremi</button>
 </mat-dialog-actions>

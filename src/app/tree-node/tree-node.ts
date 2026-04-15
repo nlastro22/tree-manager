@@ -57,7 +57,7 @@ export class TreeNode {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== undefined) {
-        console.log(result);
+        this.treeService.changeLabel(this.node().id, result);
       }
     });
   }
