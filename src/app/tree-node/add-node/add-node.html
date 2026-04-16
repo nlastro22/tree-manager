@@ -11,8 +11,20 @@
 <mat-dialog-content>
   <mat-form-field>
     <mat-label>Naziv</mat-label>
-    <input [(ngModel)]="label" matInput />
+    <input
+      [(ngModel)]="label"
+      #labelValue="ngModel"
+      matInput
+      required
+      minlength="2"
+      maxlength="30"
+    />
   </mat-form-field>
+  @if (labelValue.invalid && labelValue.touched) {
+    <mat-error>{{
+      labelValue.errors?.['required'] ? 'Naziv je obavezan' : 'Minimalno 2 znaka'
+    }}</mat-error>
+  }
 </mat-dialog-content>
 <mat-dialog-actions>
   <button matButton (click)="onCancelClick()">Odustani</button>
