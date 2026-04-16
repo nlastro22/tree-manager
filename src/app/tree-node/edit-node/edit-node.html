@@ -2,7 +2,7 @@
 <mat-dialog-content>
   <mat-form-field>
     <mat-label>Naziv</mat-label>
-    <input [(ngModel)]="label" #newLabel="ngModel" matInput [value]="label()" />
+    <input [(ngModel)]="label" #newLabel="ngModel" matInput required minlength="2" maxlength="30" />
   </mat-form-field>
   @if (newLabel.invalid && newLabel.touched) {
     <mat-error>{{
@@ -12,5 +12,12 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button matButton (click)="onCancelClick()">Odustani</button>
-  <button matButton [mat-dialog-close]="newLabel.value" cdkFocusInitial>Spremi</button>
+  <button
+    matButton
+    [disabled]="newLabel.invalid"
+    [mat-dialog-close]="newLabel.value"
+    cdkFocusInitial
+  >
+    Spremi
+  </button>
 </mat-dialog-actions>
