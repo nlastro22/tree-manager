@@ -1,21 +1,14 @@
-<div class="actions-container">
-  <button (click)="onAddChildClick()" class="actions-btn" matButton="filled">
+<button matButton [matMenuTriggerFor]="menu">
+  <mat-icon>menu</mat-icon>
+</button>
+<mat-menu mat-icon-button #menu="matMenu">
+  <button mat-menu-item (click)="onAddChildClick()">
     <mat-icon>add</mat-icon>
     Dodaj dijete
   </button>
-  <button (click)="onAddParentClick()" class="actions-btn" matButton="filled">
-    <mat-icon>add</mat-icon>
-    Dodaj roditelja
+  <button mat-menu-item (click)="onAddParentClick()">
+    <mat-icon>add</mat-icon> Dodaj roditelja
   </button>
-  <button (click)="onEditBtnClick()" class="actions-btn" matButton="outlined">
-    <mat-icon>edit</mat-icon>
-    Uredi
-  </button>
-  <button (click)="onDeleteBtnClick()" class="actions-btn delete-btn" matButton="outlined">
-    <mat-icon>delete</mat-icon>
-    Obriši
-  </button>
-  <button mat-icon-button>
-    <mat-icon> drag_handle</mat-icon>
-  </button>
-</div>
+  <button mat-menu-item (click)="onEditBtnClick()"><mat-icon>edit</mat-icon> Uredi</button>
+  <button mat-menu-item (click)="onDeleteBtnClick()"><mat-icon>delete</mat-icon> Obriši</button>
+</mat-menu>
