@@ -1,5 +1,5 @@
-<button matButton [matMenuTriggerFor]="menu">
-  <mat-icon>menu</mat-icon>
+<button class="menu-btn" mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>more_vert</mat-icon>
 </button>
 <mat-menu mat-icon-button #menu="matMenu">
   <button mat-menu-item (click)="onAddChildClick()">
