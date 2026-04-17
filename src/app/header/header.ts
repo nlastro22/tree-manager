@@ -29,7 +29,7 @@ export class Header {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== undefined) {
-        this.treeService.addRootNode(result);
+        this.treeService.addRootNode(result.label, result.group);
       }
     });
   }

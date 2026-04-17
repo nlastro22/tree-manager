@@ -3,12 +3,16 @@
     "id": "1",
     "label": "Alati",
     "opened": false,
+    "type": "group",
     "items": [
-      { "id": "1.1", "label": "Identify gumb", "items": [], "opened": false },
+      { "id": "1.1", "label": "Identify gumb", "type": "group", "items": [], "opened": false },
       {
         "id": "1.2",
         "label": "Info lokacija gumb",
-        "items": [{ "id": "1.21", "label": "Desni panel", "items": [], "opened": false }],
+        "type": "group",
+        "items": [
+          { "id": "1.21", "label": "Desni panel", "type": "group", "items": [], "opened": false }
+        ],
         "opened": false
       }
     ]
@@ -17,9 +21,16 @@
     "id": "2",
     "label": "Katalog slojeva",
     "opened": false,
+    "type": "group",
     "items": [
-      { "id": "2.1", "label": "Identify gumb", "items": [], "opened": false },
-      { "id": "2.2", "label": "Info lokacija gumb", "items": [], "opened": false }
+      {
+        "id": "2.1",
+        "label": "Identify gumb",
+        "type": "group",
+        "items": [{ "id": "2.11", "label": "Layer", "type": "layer", "opened": false }],
+        "opened": false
+      },
+      { "id": "2.2", "label": "Info lokacija gumb", "type": "group", "items": [], "opened": false }
     ]
   }
 ]

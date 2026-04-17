@@ -25,10 +25,19 @@
       labelValue.errors?.['required'] ? 'Naziv je obavezan' : 'Minimalno 2 znaka'
     }}</mat-error>
   }
+  <mat-radio-group aria-label="Odaberi tip elementa" (change)="group.set($event.value)">
+    <mat-radio-button value="group">Grupa</mat-radio-button>
+    <mat-radio-button value="layer">Sloj</mat-radio-button>
+  </mat-radio-group>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button matButton (click)="onCancelClick()">Odustani</button>
-  <button matButton [disabled]="labelValue.invalid" [mat-dialog-close]="label()" cdkFocusInitial>
+  <button
+    matButton
+    [disabled]="labelValue.invalid"
+    [mat-dialog-close]="{ label: label(), group: group() }"
+    cdkFocusInitial
+  >
     Dodaj
   </button>
 </mat-dialog-actions>

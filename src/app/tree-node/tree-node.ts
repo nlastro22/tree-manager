@@ -31,7 +31,7 @@ export class TreeNode {
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== undefined) {
         const isChild = type === 'child' ? true : false;
-        this.treeService.addTreeNode(result, node.id, isChild);
+        this.treeService.addTreeNode(result.label, node.id, isChild, result.group);
       }
     });
   }

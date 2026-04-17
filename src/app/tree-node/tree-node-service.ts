@@ -1,6 +1,7 @@
 import { effect, Injectable, signal } from '@angular/core';
 import { TreeNodeModel } from './tree-node.model';
 import treeData from '../../../public/data.json';
+import { NodeType } from './node-type.model';
 
 @Injectable({
   providedIn: 'root',
@@ -25,19 +26,21 @@ export class TreeNodeService {
     return treeData as TreeNodeModel[];
   }
 
-  addRootNode(label: string): void {
+  addRootNode(label: string, nodeType: NodeType): void {
     const newNode: TreeNodeModel = {
       id: Math.random().toString(),
       label: label,
+      type: nodeType,
       opened: false,
     };
 
     this._treeData.update((oldArray) => [...oldArray, newNode]);
   }
 
-  addTreeNode(label: string, id: string, isChild: boolean): void | null {
+  addTreeNode(label: string, id: string, isChild: boolean, nodeType: NodeType): void | null {
     const newNode: TreeNodeModel = {
       id: Math.random().toString(),
+      type: nodeType,
       label: label,
       opened: false,
     };
