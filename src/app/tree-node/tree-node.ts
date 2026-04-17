@@ -18,46 +18,46 @@ export class TreeNode {
   private readonly treeService = inject(TreeNodeService);
   private readonly dialog = inject(MatDialog);
 
-  node = input.required<TreeNodeModel>();
+  nodes = input.required<TreeNodeModel[]>();
   isHovering = signal(false);
 
-  onNodeClick(): void {
-    this.treeService.toggleNode(this.node().id);
+  onNodeClick(node: TreeNodeModel): void {
+    this.treeService.toggleNode(node.id);
   }
 
-  onAddEvent(type: 'child' | 'parent'): void {
+  onAddEvent(type: 'child' | 'parent', node: TreeNodeModel): void {
     const dialogRef = this.dialog.open(AddNode, {
-      data: { addType: type, node: this.node() },
+      data: { addType: type, node: node },
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== undefined) {
         const isChild = type === 'child' ? true : false;
-        this.treeService.addTreeNode(result, this.node().id, isChild);
+        this.treeService.addTreeNode(result, node.id, isChild);
       }
     });
   }
 
-  onDeleteEvent(): void {
+  onDeleteEvent(node: TreeNodeModel): void {
     const dialogRef = this.dialog.open(DeleteNode, {
-      data: { label: this.node().label },
+      data: { label: node.label },
       width: '35rem',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'delete') {
-        this.treeService.deleteNode(this.node().id, false);
+        this.treeService.deleteNode(node.id, false);
       } else if (result === 'delete-all') {
-        this.treeService.deleteNode(this.node().id, true);
+        this.treeService.deleteNode(node.id, true);
       }
     });
   }
 
-  onEditEvent(): void {
-    const dialogRef = this.dialog.open(EditNode, { data: { label: this.node().label } });
+  onEditEvent(node: TreeNodeModel): void {
+    const dialogRef = this.dialog.open(EditNode, { data: { label: node.label } });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== undefined) {
-        this.treeService.changeLabel(this.node().id, result);
+        this.treeService.changeLabel(node.id, result);
       }
     });
   }
