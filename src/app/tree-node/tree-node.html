@@ -1,52 +1,19 @@
-<!-- @let _node = node();
-<div class="node-container">
-  <div
-    class="parent-container"
-    (mouseenter)="isHovering.set(true)"
-    (mouseleave)="isHovering.set(false)"
-  >
-    <button class="parent-btn" (click)="onNodeClick()">
-      <mat-icon>{{ node().opened ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
-      <p>{{ _node.label }}</p>
-      <p>{{ node().items && node().items?.length ? '(' + node().items?.length + ')' : '' }}</p>
-    </button>
-    @if (isHovering()) {
-      <app-actions
-        (add)="onAddEvent($event)"
-        (delete)="onDeleteEvent()"
-        (edit)="onEditEvent()"
-      ></app-actions>
-    }
-  </div>
-  @if (node().opened) {
-    <div class="children-container">
-      @for (item of node().items; track item.id) {
-        <app-tree-node [node]="item"></app-tree-node>
-      }
-    </div>
-  }
-</div> -->
-
 <div>
   @for (node of nodes(); track node.id) {
     <div class="node-container">
-      <div
-        class="parent-container"
-        (mouseenter)="isHovering.set(true)"
-        (mouseleave)="isHovering.set(false)"
-      >
+      <div class="parent-container">
         <button class="parent-btn" (click)="onNodeClick(node)">
           <mat-icon>{{ node.opened ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
           <p>{{ node.label }}</p>
           <p>{{ node.items && node.items.length ? '(' + node.items.length + ')' : '' }}</p>
         </button>
-        @if (isHovering()) {
-          <app-actions
-            (add)="onAddEvent($event, node)"
-            (delete)="onDeleteEvent(node)"
-            (edit)="onEditEvent(node)"
-          ></app-actions>
-        }
+
+        <app-actions
+          class="actions-component"
+          (add)="onAddEvent($event, node)"
+          (delete)="onDeleteEvent(node)"
+          (edit)="onEditEvent(node)"
+        ></app-actions>
       </div>
       @if (node.opened && node.items) {
         <div class="children-container">

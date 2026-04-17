@@ -1,4 +1,4 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { TreeNodeModel } from './tree-node.model';
 import { TreeNodeService } from './tree-node-service';
@@ -19,7 +19,6 @@ export class TreeNode {
   private readonly dialog = inject(MatDialog);
 
   nodes = input.required<TreeNodeModel[]>();
-  isHovering = signal(false);
 
   onNodeClick(node: TreeNodeModel): void {
     this.treeService.toggleNode(node.id);

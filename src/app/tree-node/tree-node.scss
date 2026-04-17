@@ -13,6 +13,13 @@
   &:hover {
     background-color: var(--mat-sys-secondary-fixed);
   }
+  .actions-component {
+    display: none;
+  }
+  &:hover .actions-component {
+    display: block;
+    background-color: var(--mat-sys-secondary-fixed);
+  }
 }
 
 .parent-btn {
