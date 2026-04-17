@@ -3,7 +3,11 @@
     <div class="node-container">
       <div class="parent-container">
         <button class="parent-btn" (click)="onNodeClick(node)">
-          <mat-icon>{{ node.opened ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
+          @if (node.type === 'group') {
+            <mat-icon>{{ node.opened ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
+          } @else {
+            <mat-icon class="layer-icon">lens</mat-icon>
+          }
           <p>{{ node.label }}</p>
           <p>{{ node.items && node.items.length ? '(' + node.items.length + ')' : '' }}</p>
         </button>

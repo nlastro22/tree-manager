@@ -20,6 +20,10 @@
   &:hover .actions-component {
     display: block;
   }
+
+  .layer-icon {
+    transform: scale(0.3);
+  }
 }
 
 .parent-btn {
